@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="8dp"
+        android:backgroundTint="@color/yellow"
+        app:cardCornerRadius="16dp">
+
+        <TextView
+            android:id="@+id/tvQoute"
+            android:padding="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            tools:text="Жизнь дает человеку не то, что он хочет, а то, что ему надо. Поэтому не спрашивайте: «За что?» , а подумайте: «Для чего?»" />
+
+        <TextView
+            android:id="@+id/tvAutor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="6dp"
+            android:layout_marginEnd="6dp"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            tools:text="Длинное имя Автора" />
+
+    </androidx.cardview.widget.CardView>
+
+
+</LinearLayout>
