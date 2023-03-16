@@ -9,7 +9,7 @@ class QouteAdapter : RecyclerView.Adapter<QouteAdapter.QouteViewHolder>() {
 
     class QouteViewHolder(val binding: QouteListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
-    var qouteList = emptyList<Model>()
+    var qouteList = emptyList<Model?>()
 
     set(value) {
         field=value
@@ -27,8 +27,8 @@ class QouteAdapter : RecyclerView.Adapter<QouteAdapter.QouteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: QouteViewHolder, position: Int) {
-        holder.binding.tvQoute.text = qouteList[position].quoteText
-        holder.binding.tvAutor.text = qouteList[position].quoteAuthor
+        holder.binding.tvQoute.text = qouteList[position]?.quoteText
+        holder.binding.tvAutor.text = qouteList[position]?.quoteAuthor
     }
 
     override fun getItemCount(): Int {

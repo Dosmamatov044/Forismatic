@@ -13,7 +13,7 @@ interface QouteDao {
 
 
     @Query("SELECT * FROM SQ")
-    fun getAllQoute():LiveData<List<Model>>
+    fun getAllQoute():LiveData<List<Model?>>
 
 //    @Update
 //    fun updateLastQoute(): Model

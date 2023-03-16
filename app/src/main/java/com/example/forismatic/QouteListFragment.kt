@@ -10,11 +10,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.forismatic.databinding.FragmentQouteListBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class QouteListFragment : Fragment() {
     private lateinit var binding: FragmentQouteListBinding
     val viewModel:QouteViewModel by viewModels()
@@ -37,10 +38,15 @@ class QouteListFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
 
-            viewModel.listData?.collect{
+            viewModel.listData?.observe(viewLifecycleOwner){
 
 
-                adapter.qouteList=it
+
+                    adapter.qouteList=it
+
+
+
+
 
 
             }

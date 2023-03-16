@@ -4,10 +4,19 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.forismatic.db.QouteDatabase
+import com.example.forismatic.repository.QouteRepository
 import com.example.forismatic.retrofit.ApiFactory
+import com.example.forismatic.retrofit.ApiServices
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import javax.inject.Inject
 
-class QouteViewModel(application: Application): AndroidViewModel(application) {
+
+@HiltViewModel
+class QouteViewModel @Inject constructor(val repository: QouteRepository,application: Application): AndroidViewModel(application) {
 
     var dataDb:QouteDatabase?=null
 
@@ -20,6 +29,8 @@ class QouteViewModel(application: Application): AndroidViewModel(application) {
     init {
 
          dataDb=QouteDatabase.getInstance(application)
+
+
 
     }
 
@@ -34,7 +45,7 @@ class QouteViewModel(application: Application): AndroidViewModel(application) {
 
 
 
-    val listData=     dataDb?.qouteDao()?.getAllQoute()?.asFlow()
+    val listData=     dataDb?.qouteDao()?.getAllQoute()
 
 
 
@@ -72,7 +83,7 @@ class QouteViewModel(application: Application): AndroidViewModel(application) {
   fun  getFromRetrofit(){
 
       viewModelScope.launch {
-          val apiData=ApiFactory.apiServices.getQuote()
+          val apiData=repository.apiServices.getQuote()
 
           try {
               if (apiData.isSuccessful){
